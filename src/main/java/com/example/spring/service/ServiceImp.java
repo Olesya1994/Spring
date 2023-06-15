@@ -5,10 +5,10 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Collections;
 import java.util.Set;
-
-@Service
 @SessionScope
-public class ServiceImp implements Service {
+@Service
+
+public class ServiceImp implements com.example.spring.service.Service {
     public Set<Integer> items;
 
     public ServiceImp(Set<Integer> items){
@@ -17,13 +17,12 @@ public class ServiceImp implements Service {
 
 
     @Override
-    public void add( Set<Integer> ids) {
+    public void add(Set<Integer> ids) {
         items.addAll(ids);
-
     }
 
-    @Override
-    public Set<Integer> get() {
+      @Override
+      public Set<Integer> get() {
         return Collections.unmodifiableSet(items);
     }
 }
