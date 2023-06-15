@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 
+
 @RestController
 @RequestMapping("/order")
 public class Controller {
@@ -19,12 +20,11 @@ public class Controller {
     }
 
     @GetMapping("/add")
-    public void add(RequestParam ids){
-        service.add((Set<Integer>) ids);
-
+    public void add(@RequestParam("ID") Set<Integer> ids) {
+        service.add(ids);
     }
     @GetMapping("/get")
-    public Set<Integer> get(){
+    public Set<Integer> get() {
         return service.get();
     }
 
