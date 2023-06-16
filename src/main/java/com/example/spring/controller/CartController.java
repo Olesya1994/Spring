@@ -1,6 +1,6 @@
 package com.example.spring.controller;
 
-import com.example.spring.service.ServiceImp;
+import com.example.spring.service.CartServiceImp;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,20 +11,20 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/order")
-public class Controller {
-    private final ServiceImp service;
+public class CartController {
+    private final CartServiceImp service;
 
-    public Controller(ServiceImp service) {
+    public CartController(CartServiceImp service) {
         this.service = service;
     }
 
     @GetMapping("/add")
-    public void add(RequestParam ids){
-        service.add((Set<Integer>) ids);
-
+    public void add(@RequestParam("ID") Set<Integer> ids) {
+        service.add(ids);
     }
+
     @GetMapping("/get")
-    public Set<Integer> get(){
+    public Set<Integer> get() {
         return service.get();
     }
 
